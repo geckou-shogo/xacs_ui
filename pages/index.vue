@@ -22,7 +22,22 @@
       :iconName="'bi-stickies'"
       :buttonText="'共有URLの発行'"
     />
-
+    <SearchTag
+      :background="'orange'"
+      :tagText="'$作成日#2022-12-07'"
+    />
+    <SearchTag
+      :background="'pink'"
+      :tagText="'$作成日#2022-12-07'"
+    />
+    <SearchTag
+      :background="'green'"
+      :tagText="'$作成日#2022-12-07'"
+    />
+    <SearchTag
+      :background="'purple'"
+      :tagText="'$作成日#2022-12-07'"
+    />
   </PageContainer>
 </template>
 

@@ -68,6 +68,10 @@ const tabSelected = (tabValue: string): void => {
   --alert-color     : #AF3636;
   --border-color    : #DFDFDF;
   --shadow-color    : rgba(20, 21, 21, .1);
+  --tag1-color      : #CA841B;
+  --tag2-color      : #C66179;
+  --tag3-color      : #9EA204;
+  --tag4-color      : #9A5DB7;
   --line-height     : 1.4;
   --letter-spacing  : .1em;
   --base-font-size  : 14px;
