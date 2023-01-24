@@ -3,7 +3,9 @@
     <SectionHeading
       :headingText="'操作履歴'"
     />
-
+    <ContentsHeader>
+      <HeaderBreadcrumbing></HeaderBreadcrumbing>
+    </ContentsHeader>
     <SectionHeading
       :headingText="'最近更新されたファイル'"
     >
