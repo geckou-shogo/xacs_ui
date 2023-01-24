@@ -38,8 +38,8 @@ const Props = defineProps<Props>()
   display: inline-block;
   
   &_container {
-    padding      : var(--bv);
     display      : inline-block;
+    padding      : var(--bv);
     border       : solid 1px var(--main-color);
     border-radius: 4px;
 
