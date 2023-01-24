@@ -12,6 +12,15 @@
         @selected="listTypeSelected"
       />
     </SectionHeading>
+    <CommonButton
+      :iconName="'bi-file-earmark-plus'"
+      :buttonText="'ファイルの追加'"
+    />
+    <CommonButton
+      :iconName="'bi-stickies'"
+      :buttonText="'共有URLの発行'"
+    />
+
   </PageContainer>
 </template>
 
