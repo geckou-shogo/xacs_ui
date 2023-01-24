@@ -7,34 +7,31 @@
   </button>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script setup lang="ts">
+interface Props {
+  isSelected: Boolean,
+}
 
-export default Vue.extend({
-  name: 'SelectButton',
-  props: {
-    isSelected: {
-      required: true,
-      type    : Boolean,
-    },
-  },
-  methods: {
-    onButtonClick() {
-      this.$emit('onClick')
-    },
-  },
-})
+interface Emits {
+  (e: string): void
+}
+
+const props = defineProps<Props>()
+const emit = defineEmits<Emits>()
+const onButtonClick = () => {
+  emit('onClick')
+}
 </script>
 
 <style lang="scss" module>
 .select_button {
-  box-shadow: 0 0 2px 1px var(--shadow-color);
-  position  : relative;
-  overflow  : hidden;
+  position: relative;
+  overflow: hidden;
 
   > * {
-    color   : var(--main-color);
-    position: relative;
+    color     : var(--main-color);
+    transition: color .3s linear;
+    position  : relative;
   }
 
   &::before {
@@ -50,7 +47,8 @@ export default Vue.extend({
 
   &.selected {
     > * {
-      color: var(--white-color);
+      color      : var(--white-color);
+      font-weight: bold;
     }
 
     &::before {

@@ -4,26 +4,33 @@
       :displayState="navDisplayState"
       @openNav="navDisplayState = true"
     >
-      <!-- <div :class="$style.tabs">
+      <div :class="$style.tabs">
         <NavContentSelectTab
           :selectedTab="selectedTab"
           @selected="tabSelected"
         />
       </div>
       <div>
-        <NavTreeList
+        <ContentsTree
           v-show="selectedTab === 'tree'"
-          :tagData="tagData"
         />
-      </div> -->
+      </div>
     </SideNav>
     <div :class="$style.column">
       <GlobalHeader>
-        <IconButton
-          @onClick="navDisplayState = !navDisplayState"
+        <div
+          :class="$style.header"
         >
-          <i class="bi bi-filter-left" />
-        </IconButton>
+          <IconButton
+            @onClick="navDisplayState = !navDisplayState"
+          >
+            <i class="bi bi-filter-left" />
+          </IconButton>
+          <AccountInfo
+            :userName="userData.name"
+            :class="$style.account_info"
+          />
+        </div>
       </GlobalHeader>
       <div :class="$style.contents">
         <slot />
@@ -38,10 +45,18 @@ definePageMeta({
 })
 
 const navDisplayState = ref(true)
+const selectedTab = ref('tree')
+const userData = ref({
+  name: 'USER NAME',
+})
+
+const tabSelected = (tabValue: string): void => {
+  selectedTab.value = tabValue
+}
 </script>
 
 <style lang="scss" module>
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@200;400&display=swap');
 
 :root {
   --bv              : .5rem;
@@ -50,9 +65,11 @@ const navDisplayState = ref(true)
   --base-color      : #EEF1F2;
   --text-color      : #262A2C;
   --link-color      : #005AAF;
+  --alert-color     : #AF3636;
+  --border-color    : #DFDFDF;
   --shadow-color    : rgba(20, 21, 21, .1);
   --line-height     : 1.4;
-  --letter-spacing  : .01em;
+  --letter-spacing  : .1em;
   --base-font-size  : 14px;
   --large-font-size : 16px;
   --larger-font-size: 18px;
@@ -69,6 +86,7 @@ body {
   color                : var(--text-color);
   font-family          : 'M PLUS 1p', sans-serif;
   font-size            : var(--base-font-size);
+  font-weight          : 200;
   line-height          : var(--line-height);
   letter-spacing       : var(--letter-spacing);
   word-wrap            : break-word;
@@ -149,6 +167,7 @@ table {
   display: flex;
 
   .column {
+    flex          : 1 1 100%;
     display       : flex;
     flex-direction: column;
 
@@ -156,5 +175,10 @@ table {
       flex: 1 0 auto;
     }
   }
+}
+
+.header {
+  display        : flex;
+  justify-content: space-between;
 }
 </style>

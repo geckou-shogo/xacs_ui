@@ -1,15 +1,29 @@
 <template>
-  <main>
-    <p :class="$style.wrapper">
-      サービスについて
-    </p>
-  </main>
+  <PageContainer>
+    <SectionHeading
+      :headingText="'操作履歴'"
+    />
+
+    <SectionHeading
+      :headingText="'最近更新されたファイル'"
+    >
+      <ListTypeSelector
+        :selectedListType="selectedListType"
+        @selected="listTypeSelected"
+      />
+    </SectionHeading>
+  </PageContainer>
 </template>
 
 <script setup lang="ts">
 definePageMeta({
   name: 'TopPage',
 })
+
+const selectedListType = ref('card')
+const listTypeSelected = (listType: string): void => {
+  selectedListType.value = listType
+}
 </script>
 
 <style lang="scss" module>

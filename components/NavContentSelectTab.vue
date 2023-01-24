@@ -7,9 +7,7 @@
       :isSelected="selectedTab === tab.value"
       @onClick="tabSelected(tab.value)"
     >
-      <component
-        :is="tab.icon"
-      />
+      <i :class="['bi', tab.icon]" />
       <span>
         {{ tab.text }}
       </span>
@@ -17,39 +15,33 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script setup lang="ts">
+interface Emits {
+  (e: string, tabValue: string): void
+}
 
-export default Vue.extend({
-  name: 'NavContentSelectTab',
-  props: {
-    selectedTab: {
-      required: true,
-      type    : String,
-    },
+interface Props {
+  selectedTab: String,
+}
+
+const props = defineProps<Props>()
+const emit = defineEmits<Emits>()
+const tabs = ref([
+  {
+    icon : 'bi-diagram-3-fill',
+    text : 'ツリー',
+    value: 'tree',
   },
-  data() {
-    return {
-      tabs: [
-        {
-          icon : 'b-icon-diagram-3-fill',
-          text : 'ツリー',
-          value: 'tree',
-        },
-        {
-          icon : 'b-icon-search',
-          text : 'タグで検索',
-          value: 'search',
-        },
-      ],
-    }
+  {
+    icon : 'bi-search',
+    text : 'タグで検索',
+    value: 'search',
   },
-  methods: {
-    tabSelected(tabValue: string): void {
-      this.$emit('selected', tabValue)
-    },
-  }
-})
+])
+
+const tabSelected = (tabValue: string): void => {
+  emit('selected', tabValue)
+}
 </script>
 
 <style lang="scss" module>
@@ -69,7 +61,7 @@ export default Vue.extend({
       color: var(--white-color);
     }
 
-    > svg {
+    > i {
       color    : var(--white-color);
       font-size: calc(var(--bv) * 2);
     }

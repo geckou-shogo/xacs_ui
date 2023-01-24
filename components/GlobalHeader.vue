@@ -8,15 +8,9 @@
   </header>
 </template>
 
-<script setup lang="ts">
-defineComponent({
-  name: 'GlobalHeader',
-})
-</script>
-
 <style lang="scss" module>
 .global_header {
-  width: 100vw;
+  width: 100%;
   
   .contents {
     padding: var(--bv);
