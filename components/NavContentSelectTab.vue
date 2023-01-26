@@ -16,11 +16,11 @@
 </template>
 
 <script setup lang="ts">
-interface Emits {
+type Emits = {
   (e: string, tabValue: string): void
 }
 
-interface Props {
+type Props = {
   selectedTab: String,
 }
 

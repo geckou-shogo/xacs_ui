@@ -1,3 +1,10 @@
+<script setup lang="ts">
+type Props = {
+  userName: String,
+}
+const props = defineProps<Props>()
+</script>
+
 <template>
   <SlideDownBox>
     <template v-slot:button>
@@ -26,13 +33,6 @@
     </template>
   </SlideDownBox>
 </template>
-
-<script setup lang="ts">
-interface Props {
-  userName: String,
-}
-const props = defineProps<Props>()
-</script>
 
 <style lang="scss" module>
 .button {

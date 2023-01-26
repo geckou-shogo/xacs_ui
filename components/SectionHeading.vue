@@ -1,17 +1,10 @@
-<script setup lang="ts">
-interface Props {
-  headingText: String,
-}
-const props = defineProps<Props>()
-</script>
-
 <template>
   <div :class="$style.section_heading">
-    <h2>
-      {{ headingText }}
-    </h2>
-    <div>
-      <slot />
+    <div v-if="$slots.heading">
+      <slot :name="'heading'" />
+    </div>
+    <div v-if="$slots.option">
+      <slot :name="'option'" />
     </div>
   </div>
 </template>
@@ -24,7 +17,7 @@ const props = defineProps<Props>()
   width          : 100%;
   padding        : var(--bv) 0;
 
-  > h2 {
+  h2 {
     font-size: var(--large-font-size);
   }
 }

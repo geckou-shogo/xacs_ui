@@ -1,3 +1,20 @@
+<script setup lang="ts">
+type Emits = {
+  (e: string): void
+}
+
+type Props = {
+  displayState: boolean,
+}
+
+const props = defineProps<Props>()
+const emit = defineEmits<Emits>()
+
+const openNav = () => {
+  if (!props.displayState) emit('openNav')
+}
+</script>
+
 <template>
   <nav
     :class="[$style.side_nav, displayState ? '' : $style.shrink]"
@@ -13,23 +30,6 @@
     </div>
   </nav>
 </template>
-
-<script setup lang="ts">
-interface Emits {
-  (e: string): void
-}
-
-interface Props {
-  displayState: boolean,
-}
-
-const props = defineProps<Props>()
-const emit = defineEmits<Emits>()
-
-const openNav = () => {
-  if (!props.displayState) emit('openNav')
-}
-</script>
 
 <style lang="scss" module>
 .side_nav {

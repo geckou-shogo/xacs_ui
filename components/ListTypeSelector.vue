@@ -1,9 +1,9 @@
 <script setup lang="ts">
-interface Emits {
+type Emits = {
   (e: string, listType: string): void
 }
 
-interface Props {
+type Props = {
   selectedListType: String,
 }
 

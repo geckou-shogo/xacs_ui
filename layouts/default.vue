@@ -56,29 +56,30 @@ const tabSelected = (tabValue: string): void => {
 </script>
 
 <style lang="scss" module>
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@200;400&display=swap');
-
 :root {
-  --bv              : .5rem;
-  --white-color     : #fff;
-  --main-color      : #005AAF;
-  --base-color      : #EEF1F2;
-  --text-color      : #262A2C;
-  --link-color      : #005AAF;
-  --alert-color     : #AF3636;
-  --border-color    : #DFDFDF;
-  --shadow-color    : rgba(20, 21, 21, .1);
-  --tag1-color      : #CA841B;
-  --tag2-color      : #C66179;
-  --tag3-color      : #9EA204;
-  --tag4-color      : #9A5DB7;
-  --line-height     : 1.4;
-  --letter-spacing  : .1em;
-  --base-font-size  : 14px;
-  --large-font-size : 16px;
-  --larger-font-size: 18px;
-  --small-font-size : 12px;
-  --min-font-size   : 10px;
+  --bv                : .5rem;
+  --white-color       : #ffffff;
+  --main-color        : #005AAF;
+  --base-color        : #EEF1F2;
+  --text-color        : #262A2C;
+  --disable-text-color: #AAAAAA;
+  --link-color        : #005AAF;
+  --hover-color       : rgba(124, 205, 246, .3);
+  --decision-color    : #009F70;
+  --alert-color       : #AF3636;
+  --border-color      : #DFDFDF;
+  --shadow-color      : rgba(20, 21, 21, .1);
+  --tag1-color        : #CA841B;
+  --tag2-color        : #C66179;
+  --tag3-color        : #9EA204;
+  --tag4-color        : #9A5DB7;
+  --line-height       : 1.4;
+  --letter-spacing    : .1em;
+  --base-font-size    : 14px;
+  --large-font-size   : 16px;
+  --larger-font-size  : 18px;
+  --small-font-size   : 12px;
+  --min-font-size     : 10px;
 }
 
 html {
@@ -88,9 +89,7 @@ html {
 body {
   background-color     : var(--base-color);
   color                : var(--text-color);
-  font-family          : 'M PLUS 1p', sans-serif;
   font-size            : var(--base-font-size);
-  font-weight          : 200;
   line-height          : var(--line-height);
   letter-spacing       : var(--letter-spacing);
   word-wrap            : break-word;

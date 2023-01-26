@@ -1,54 +1,68 @@
 <script setup lang="ts">
-interface Emits {
+type Emits = {
   (e: string): void
 }
 
-const onButtonClick = () => {
-  emit('onClick')
-}
-
-interface Props {
-  buttonText: string,
-  iconName: string,
+type Props = {
+  text       : string,
+  iconName   : string,
+  buttonType?: string,
 }
 
 const emit = defineEmits<Emits>()
-const Props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  buttonType: 'standard',
+})
+const onButtonClick = () => {
+  emit('onClick')
+}
 </script>
 
 <template>
   <button
-    :class="$style.button"
+    :class="[$style.button, $style[buttonType]]"
     @click.prevent="onButtonClick"
     type="button"
   >
-    <div
-      :class="$style.button_container"
-    >
-      <i :class="['bi', iconName]"></i>
-      <span>
-        {{ buttonText }}
-      </span>
-    </div>
+    <i :class="['bi', iconName]"></i>
+    <span>
+      {{ text }}
+    </span>
   </button>
 </template>
 
 <style lang="scss" module>
 .button {
-  display: inline-block;
-  
-  &_container {
-    display      : inline-block;
-    padding      : var(--bv);
-    border       : solid 1px var(--main-color);
-    border-radius: 4px;
+  --button-color  : var(--link-color);
+  display         : inline-flex;
+  align-items     : center;
+  gap             : var(--bv);
+  padding         : var(--bv);
+  background-color: var(--white-color);
+  border-radius   : calc(var(--bv) / 2);
+  border          : 1px solid var(--button-color);
+  color           : var(--button-color);
+  transition      : all .1s linear;
 
-    span {
-      margin-left: var(--bv);
-      font-weight: bold;
-      color      : var(--main-color);
-    }
+  > i {
+    font-size: 1rem;
+  }
+
+  &:hover {
+    background-color: var(--button-color);
+    color           : var(--white-color);
+  }
+
+  &.standard {
+    --button-color  : var(--link-color);
+  }
+
+  &.decision {
+    --button-color  : var(--decision-color);
+  }
+
+  &.alert {
+    --button-color  : var(--alert-color);
   }
 }
-
 </style>

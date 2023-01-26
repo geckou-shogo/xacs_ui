@@ -1,68 +1,46 @@
 
 <script setup lang="ts">
-  interface Props {
-    tagText: string,
-    background: string,
-  }
+type Props = {
+  text: string,
+  type: string,
+}
 
-const Props = withDefaults(defineProps<Props>(), {
-  tagText: '',
-  background: '',
-})
+const props = defineProps<Props>()
 </script>
 
 <template>
-  <div
-    :class="[
-      $style.tag, 
-      background === 'orange' ? $style.orange : '',
-      background === 'pink' ? $style.pink : '',
-      background === 'green' ? $style.green : '',
-      background === 'purple' ? $style.purple : '',
-    ]"
+  <span
+    :class="[$style.tag, $style[`type-${type}`]]"
   >
-    <p
-    >
-      {{ tagText }}
-    </p>
-  </div>
+    {{ text }}
+  </span>
 </template>
 
 <style lang="scss" module>
 .tag {
-  display: inline-block;
+  display      : inline-flex;
+  align-items  : center;
+  height       : calc(var(--bv) * 2);
+  padding      : 0 var(--bv);
+  border-radius: var(--bv);
+  color        : var(--white-color);
+  font-size    : var(--min-font-size);
+  font-weight  : bold;
 
-  p {
-    display      : inline-block;
-    padding      : 1px var(--bv);
-    color        : var(--white-color);
-    border-radius: 8px;
-  }
-
-  &.orange {
-    
-    p {
+  &.type {
+    &-1 {
       background-color: var(--tag1-color);
     }
-  }
 
-  &.pink {
-
-    p {
+    &-2 {
       background-color: var(--tag2-color);
     }
-  }
 
-  &.green {
-
-    p {
+    &-3 {
       background-color: var(--tag3-color);
     }
-  }
 
-  &.purple {
-
-    p {
+    &-4 {
       background-color: var(--tag4-color);
     }
   }

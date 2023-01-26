@@ -1,3 +1,14 @@
+<script setup lang="ts">
+type Emits = {
+  (e: string): void
+}
+
+const emit = defineEmits<Emits>()
+const onButtonClick = () => {
+  emit('onClick')
+}
+</script>
+
 <template>
   <button
     :class="$style.icon_button"
@@ -8,25 +19,23 @@
   </button>
 </template>
 
-<script setup lang="ts">
-interface Emits {
-  (e: string): void
-}
-
-const emit = defineEmits<Emits>()
-const onButtonClick = () => {
-  emit('onClick')
-}
-</script>
-
 <style lang="scss" module>
 .icon_button {
-  width    : calc(var(--bv) * 4);
-  height   : calc(var(--bv) * 4);
-  font-size: 32px;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  width          : calc(var(--bv) * 4);
+  height         : calc(var(--bv) * 4);
+  transition     : background-color .1s linear;
+  border-radius  : 50%;
   
   > i {
-    color: var(--link-color);
+    font-size: 1.5rem;
+    color    : var(--link-color);
+  }
+
+  &:hover {
+    background-color: var(--hover-color);
   }
 }
 </style>

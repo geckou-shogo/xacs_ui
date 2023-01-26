@@ -8,11 +8,11 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+type Props = {
   isSelected: Boolean,
 }
 
-interface Emits {
+type Emits = {
   (e: string): void
 }
 
@@ -25,13 +25,18 @@ const onButtonClick = () => {
 
 <style lang="scss" module>
 .select_button {
-  position: relative;
-  overflow: hidden;
+  position  : relative;
+  overflow  : hidden;
+  transition: background-color .1s linear;
 
   > * {
     color     : var(--main-color);
     transition: color .3s linear;
     position  : relative;
+  }
+
+  &:hover {
+    background-color: var(--hover-color);
   }
 
   &::before {

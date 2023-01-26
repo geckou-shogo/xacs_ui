@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 /** Props */
-interface Props {
+type Props = {
   tree: ContentTree;
   selectedObjectKey?: string;
 }
@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<Props>(),{
     selectedObjectKey:''});
 
 /** Emits */
-interface Emits {
+type Emits = {
   (e: 'select-tree', objectKey: string): void;
   //(e: 'update:selectedObjectKey', text: string): void;
 }

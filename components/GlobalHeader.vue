@@ -13,7 +13,7 @@
   width: 100%;
   
   .contents {
-    padding: var(--bv);
+    padding: var(--bv) calc(var(--bv) * 2);
   }
 }
 </style>

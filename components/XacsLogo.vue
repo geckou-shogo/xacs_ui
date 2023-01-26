@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+type Props = {
   onlySymbols: boolean,
 }
 
