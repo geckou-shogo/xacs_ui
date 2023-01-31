@@ -98,6 +98,7 @@ const fileUpload = (file: any) => {
           />
         </template>
       </SectionHeading>
+      <CardItem></CardItem>
     </ContentsContainer>
   </PageContainer>
 </template>
