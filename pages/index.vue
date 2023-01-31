@@ -98,6 +98,31 @@ const fileUpload = (file: any) => {
           />
         </template>
       </SectionHeading>
+        <ListTable
+        :lists="[
+          {
+            id: '1',
+            date: '2022-12-08 11:42:40',
+            currentLink: '受注前>引き合い対応>メモ',
+            fileData: '株式会社ABC_テストデータ_040.jpg',
+            link: '/',
+          },
+          {
+            id: '2',
+            date: '2022-12-08 11:42:40',
+            currentLink: '受注前>引き合い対応>メモ',
+            fileData: '株式会社ABC_テストデータ_040.jpg',
+            link: '/',
+          },
+          {
+            id: '3',
+            date: '2022-12-08 11:42:40',
+            currentLink: '受注前>引き合い対応>メモ',
+            fileData: '株式会社ABC_テストデータ_040.jpg',
+            link: '/',
+          },
+        ]"
+      ></ListTable>
     </ContentsContainer>
   </PageContainer>
 </template>
