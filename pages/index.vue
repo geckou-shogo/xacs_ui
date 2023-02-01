@@ -98,7 +98,6 @@ const fileUpload = (file: any) => {
           />
         </template>
       </SectionHeading>
-      <CardItem></CardItem>
         <ListTable
         :lists="[
           {
@@ -123,7 +122,7 @@ const fileUpload = (file: any) => {
             link: '/',
           },
         ]"
-      ></ListTable>
+      </ListTable>
     </ContentsContainer>
   </PageContainer>
 </template>
