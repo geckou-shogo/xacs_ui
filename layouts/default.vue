@@ -1,3 +1,21 @@
+<script setup lang="ts">
+import { treeData } from '~/service/tree'
+
+definePageMeta({
+  name: 'DefaultLayout',
+})
+
+const navDisplayState = ref(true)
+const selectedTab = ref('tree')
+const userData = ref({
+  name: 'USER NAME',
+})
+
+const tabSelected = (tabValue: string): void => {
+  selectedTab.value = tabValue
+}
+</script>
+
 <template>
   <div :class="$style.container">
     <SideNav
@@ -13,13 +31,12 @@
       <div>
         <ContentsTree
           v-show="selectedTab === 'tree'"
+          :tree="treeData.compiled.viewer.compiled_tree"
         />
         <ContentsSearch
           v-show="selectedTab === 'search'"
           :class="$style.search"
-        >
-
-        </ContentsSearch>
+        />
       </div>
     </SideNav>
     <div :class="$style.column">
@@ -45,21 +62,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-definePageMeta({
-  name: 'DefaultLayout',
-})
 
-const navDisplayState = ref(true)
-const selectedTab = ref('tree')
-const userData = ref({
-  name: 'USER NAME',
-})
-
-const tabSelected = (tabValue: string): void => {
-  selectedTab.value = tabValue
-}
-</script>
 
 <style lang="scss" module>
 :root {
@@ -197,8 +200,6 @@ table {
     gap: calc(var(--bv) * 2) 0;
   }
 }
-
-
 
 .header {
   display        : flex;
