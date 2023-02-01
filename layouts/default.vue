@@ -14,6 +14,12 @@
         <ContentsTree
           v-show="selectedTab === 'tree'"
         />
+        <ContentsSearch
+          v-show="selectedTab === 'search'"
+          :class="$style.search"
+        >
+
+        </ContentsSearch>
       </div>
     </SideNav>
     <div :class="$style.column">
@@ -62,6 +68,7 @@ const tabSelected = (tabValue: string): void => {
   --main-color        : #005AAF;
   --sub-color         : #5B95AB;
   --base-color        : #EEF1F2;
+  --base-sub-color    : #BBE4F4;
   --text-color        : #262A2C;
   --disable-text-color: #AAAAAA;
   --link-color        : #005AAF;
@@ -183,7 +190,15 @@ table {
       overflow: hidden;
     }
   }
+
+  .search {
+    padding: calc(var(--bv) * 2);
+    display: grid;
+    gap: calc(var(--bv) * 2) 0;
+  }
 }
+
+
 
 .header {
   display        : flex;
