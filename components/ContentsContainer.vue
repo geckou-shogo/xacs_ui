@@ -9,6 +9,6 @@
   display       : flex;
   flex-direction: column;
   gap           : calc(var(--bv) * 2);
-  padding       : calc(var(--bv) * 2) calc(var(--bv) * 4);
+  padding       : calc(var(--bv) * 2) calc(var(--bv) * 4) calc(var(--bv) * 4);
 }
 </style>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { fileList } from '~/service/static'
+
 definePageMeta({
   name: 'TopPage',
 })
@@ -16,10 +18,10 @@ const fileUpload = (file: any) => {
 <template>
   <PageContainer>
     <ContentsHeader>
-      <template v-slot:left_column>
+      <template #left_column>
         <BreadCrumbing />
       </template>
-      <template v-slot:right_column>
+      <template #right_column>
         <CommonButton
           :iconName="'bi-file-earmark-plus'"
           :text="'ファイルの追加'"
@@ -39,19 +41,39 @@ const fileUpload = (file: any) => {
       />
       <SectionHeading>
         <template
-          v-slot:heading
+          #heading
         >
           <h2>操作履歴</h2>
         </template>
       </SectionHeading>
+      <ListTable>
+        <template #tbody>
+          <tr>
+            <td>
+              2022-12-08 11:42:40
+            </td>
+            <td>
+              受注前>引き合い対応>メモ の 株式会社ABC_テストデータ_040.jpg をアップロード 
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2022-12-08 11:42:40
+            </td>
+            <td>
+              受注前>引き合い対応>メモ の 株式会社ABC_テストデータ_040.jpg をアップロード 
+            </td>
+          </tr>
+        </template>
+      </ListTable>
       <SectionHeading>
         <template
-          v-slot:heading
+          #heading
         >
           <h2>最近更新されたファイル</h2>
         </template>
         <template
-          v-slot:option
+          #option
         >
           <ListTypeSelector
             :selectedListType="selectedListType"
@@ -59,9 +81,17 @@ const fileUpload = (file: any) => {
           />
         </template>
       </SectionHeading>
+      <CardList
+        v-show="selectedListType === 'card'"
+        :list="fileList"
+      />
+      <FileListTable
+        v-show="selectedListType === 'table'"
+        :list="fileList"
+      />
       <SectionHeading>
         <template
-          v-slot:heading
+          #heading
         >
           <TagList
             :tags="[
@@ -86,11 +116,11 @@ const fileUpload = (file: any) => {
                 type: '4',
               },
             ]"
-            :isShowIcon="true"
+            :isDisplayedIcon="true"
           />
         </template>
         <template
-          v-slot:option
+          #option
         >
           <ListTypeSelector
             :selectedListType="selectedListType"
@@ -98,32 +128,6 @@ const fileUpload = (file: any) => {
           />
         </template>
       </SectionHeading>
-      <CardItem></CardItem>
-        <ListTable
-        :lists="[
-          {
-            id: '1',
-            date: '2022-12-08 11:42:40',
-            currentLink: '受注前>引き合い対応>メモ',
-            fileData: '株式会社ABC_テストデータ_040.jpg',
-            link: '/',
-          },
-          {
-            id: '2',
-            date: '2022-12-08 11:42:40',
-            currentLink: '受注前>引き合い対応>メモ',
-            fileData: '株式会社ABC_テストデータ_040.jpg',
-            link: '/',
-          },
-          {
-            id: '3',
-            date: '2022-12-08 11:42:40',
-            currentLink: '受注前>引き合い対応>メモ',
-            fileData: '株式会社ABC_テストデータ_040.jpg',
-            link: '/',
-          },
-        ]"
-      ></ListTable>
     </ContentsContainer>
   </PageContainer>
 </template>

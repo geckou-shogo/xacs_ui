@@ -7,8 +7,9 @@ const props = defineProps<Props>()
 
 <template>
   <SlideDownBox>
-    <template v-slot:button>
-      <div
+    <template #button>
+      <button
+        type="button"
         :class="$style.button"
       >
         <i class="bi bi-person-circle" />
@@ -17,9 +18,9 @@ const props = defineProps<Props>()
           class="bi bi-chevron-down"
           :class="$style.arrow"
         />
-      </div>
+      </button>
     </template>
-    <template v-slot:contents>
+    <template #contents>
       <div
         :class="$style.contents"
       >

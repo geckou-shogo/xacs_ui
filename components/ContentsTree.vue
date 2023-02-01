@@ -17,7 +17,7 @@
 <script setup lang="ts">
 /** Props */
 type Props = {
-  tree: ContentTree;
+  tree?: ContentTree;
   selectedObjectKey?: string;
 }
 const props = withDefaults(defineProps<Props>(),{

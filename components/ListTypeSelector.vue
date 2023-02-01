@@ -26,7 +26,9 @@ const listTypeSelect = (listType: string): void => {
 </script>
 
 <template>
-  <div :class="$style.list_type_selector">
+  <div
+    :class="$style.list_type_selector"
+  >
     <SelectButton
       v-for="listType in listTypes"
       :key="listType.icon"
@@ -45,13 +47,10 @@ const listTypeSelect = (listType: string): void => {
   gap    : calc(var(--bv) * 2);
   
   .button {
-    flex           : 0 0 auto;
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
-    height         : calc(var(--bv) * 5);
-    width          : calc(var(--bv) * 5);
-    border-radius  : 50%;
+    flex         : 0 0 auto;
+    height       : calc(var(--bv) * 5);
+    width        : calc(var(--bv) * 5);
+    border-radius: 50%;
 
     > i {
       font-size: calc(var(--bv) * 2);

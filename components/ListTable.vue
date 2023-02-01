@@ -1,87 +1,52 @@
-<script setup lang="ts">
-type Props = {
-  lists: any[],
-}
-
-const props = defineProps<Props>()
-</script>
-
 <template>
-  <div
-    :class="$style.container"
+  <ShadowBox
+    :class="$style.list_table"
   >
-    <table
-      :class="$style.table"
-    >
-      <thead>
-        <th
-          :class="$style.table_th"
-        >
-          <slot />
-        </th>
+    <table>
+      <thead v-if="$slots.thead">
+        <tr>
+          <slot :name="'thead'"/>
+        </tr>
       </thead>
-      <tr
-        v-for="list in lists"
-        :key="list.id"
-        :class="$style.table_tr"
-      >
-        <td
-          :class="$style.table_td"
-        >
-          {{ list.date }}
-        </td>
-        <td 
-          :class="$style.table_td"
-        >
-          <a href="list.link">{{ list.currentLink }}</a><span>の</span>
-        </td>
-        <td 
-          :class="$style.table_td"
-        >
-          <a href="list.link">{{ list.fileData }}</a><span>をアップロード</span>
-        </td>
-      </tr>
+      <tbody>
+        <slot :name="'tbody'"/>
+      </tbody>
     </table>
-  </div>
+  </ShadowBox>
 </template>
 
 <style lang="scss" module>
-.container {
-  box-shadow: 0px 0px 2px 1px rgba(20, 21, 21, 0.1);
-  border-radius: 4px;
-  background-color: var(--white-color);
+.list_table {
+  border-radius: calc(var(--bv) / 2);
+  overflow     : hidden;
 
-  .table {
+  > table {
     width: 100%;
-  
-    &_tr {
-      padding: var(--bv) calc(var(--bv) * 2);
-      display: flex;
 
-      &:not(:first-of-type) {
-        border-top: solid 1px var(--border-color);
-      }
-    }
+    thead {
+      tr {
+        background-color: var(--sub-color);
 
-    &_td {
-      &:nth-of-type(2) {
-        margin-left: calc(var(--bv) * 2);
-      }
-
-      a {
-
-        &:hover {
-          text-decoration: none;
+        th {
+          color    : var(--white-color);
+          font-size: var(--small-font-size);
+          padding  : var(--bv) calc(var(--bv) * 2);
         }
       }
+    }
+  }
 
-      span {
-        margin: 0 5px;
-        display: inline-block;
+  tbody {
+    tr {
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      td {
+        padding  : calc(var(--bv) * 2);
+        font-size: var(--small-font-size);
       }
     }
   }
 }
-
-
 </style>

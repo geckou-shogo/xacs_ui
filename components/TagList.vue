@@ -1,11 +1,11 @@
 <script setup lang="ts">
 type Props = {
-  tags      : any[],
-  isShowIcon: boolean,
+  tags            : any[],
+  isDisplayedIcon?: boolean,
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  isShowIcon: false,
+  isDisplayedIcon: false,
 })
 </script>
 
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
     :class="$style.tag_list"
   >
     <i
-      v-if="isShowIcon"
+      v-if="isDisplayedIcon"
       class="bi bi-tags-fill"
     />
     <ul

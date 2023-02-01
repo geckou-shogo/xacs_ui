@@ -9,19 +9,20 @@ onMounted(()=>{
 const toggleBox = () => {
   contentsDisplayState.value = !contentsDisplayState.value
 }
+defineExpose({
+  contentsDisplayState
+})
 </script>
 
 <template>
   <div
     :class="$style.drop_down_box"
   >
-    <button
-      :class="$style.icon_button"
-      type="button"
-      @click="toggleBox"
+    <div
+      @click.prevent="toggleBox"
     >
       <slot :name="'button'" />
-    </button>
+    </div>
     <div
       :class="$style.contents"
       :style="{
@@ -29,9 +30,9 @@ const toggleBox = () => {
         padding: contentsDisplayState ? '2px' : 0,
       }"
     >
-      <ShadowBox ref="contentsBox">
+      <ModalBox ref="contentsBox">
         <slot :name="'contents'" />
-      </ShadowBox>
+      </ModalBox>
     </div>
   </div>
 </template>

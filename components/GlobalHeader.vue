@@ -10,7 +10,9 @@
 
 <style lang="scss" module>
 .global_header {
-  width: 100%;
+  width   : 100%;
+  position: relative;
+  z-index : var(--z-index-header);
   
   .contents {
     padding: var(--bv) calc(var(--bv) * 2);

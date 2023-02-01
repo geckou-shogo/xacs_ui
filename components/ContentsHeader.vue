@@ -17,11 +17,15 @@
 
 <style lang="scss" module>
 .contents_header {
-  display        : flex;
-  justify-content: space-between;
-  align-items    : center;
-  padding        : var(--bv) calc(var(--bv) * 2);
-  border-bottom  : 1px solid var(--border-color);
+  display         : flex;
+  justify-content : space-between;
+  align-items     : center;
+  background-color: var(--base-color);
+  padding         : var(--bv) calc(var(--bv) * 2);
+  border-bottom   : 1px solid var(--border-color);
+  position        : sticky;
+  top             : 0;
+  z-index         : var(--z-index-contents);
 
   .column {
     display    : flex;

@@ -51,11 +51,8 @@ const tabSelected = (tabValue: string): void => {
   border-bottom: 1px solid var(--nav-border-color);
   
   .tab {
-    flex           : 0 0 50%;
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
-    gap            : var(--bv);
+    flex: 0 0 50%;
+    gap : var(--bv);
 
     > span {
       color: var(--white-color);

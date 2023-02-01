@@ -60,6 +60,7 @@ const tabSelected = (tabValue: string): void => {
   --bv                : .5rem;
   --white-color       : #ffffff;
   --main-color        : #005AAF;
+  --sub-color         : #5B95AB;
   --base-color        : #EEF1F2;
   --text-color        : #262A2C;
   --disable-text-color: #AAAAAA;
@@ -80,6 +81,8 @@ const tabSelected = (tabValue: string): void => {
   --larger-font-size  : 18px;
   --small-font-size   : 12px;
   --min-font-size     : 10px;
+  --z-index-header    : 80;
+  --z-index-contents  : 70;
 }
 
 html {
@@ -173,9 +176,11 @@ table {
     flex          : 1 1 100%;
     display       : flex;
     flex-direction: column;
+    max-height    : 100vh;
 
     .contents {
-      flex: 1 0 auto;
+      flex    : 1 1 100%;
+      overflow: hidden;
     }
   }
 }

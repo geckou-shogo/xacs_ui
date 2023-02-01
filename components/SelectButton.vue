@@ -25,9 +25,12 @@ const onButtonClick = () => {
 
 <style lang="scss" module>
 .select_button {
-  position  : relative;
-  overflow  : hidden;
-  transition: background-color .1s linear;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  position       : relative;
+  overflow       : hidden;
+  transition     : background-color .1s linear;
 
   > * {
     color     : var(--main-color);
