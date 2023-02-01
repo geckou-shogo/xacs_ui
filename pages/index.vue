@@ -122,7 +122,6 @@ const fileUpload = (file: any) => {
             link: '/',
           },
         ]"
-      >
       </ListTable>
     </ContentsContainer>
   </PageContainer>

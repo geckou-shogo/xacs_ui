@@ -9,7 +9,7 @@ type Props = {
 }
 
 const emit = defineEmits<Emits>()
-const props = defineProps<Props>()
+const Props = defineProps<Props>()
 const onButtonClick = () => emit('onClick')
 </script>
 
