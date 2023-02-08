@@ -5,13 +5,18 @@ import {
   $fileSizeUnit,
 } from '~/service/utils'
 
+type Emits = {
+  (e: string, itemId: string): void
+}
+
 type Props = {
   list: any[],
 }
 
+const emit = defineEmits<Emits>()
 const props = defineProps<Props>()
 const selectItem = (id: string): void => {
-  console.log(id)
+  emit('selectFile', id)
 }
 </script>
 
@@ -28,28 +33,31 @@ const selectItem = (id: string): void => {
       <tr
         v-for="item in list"
         :key="item.id"
-        @click="selectItem(item.id)"
         :class="$style.tr"
       >
         <td>
           <div
+            @click.prevent="selectItem(item.id)"
             :class="$style.item"
           >
             <i :class="['bi', $contentIconClassName(item.content_type)]" />
             {{ item.file_name }}
           </div>
         </td>
-        <td>
+        <td @click.prevent="selectItem(item.id)">
           {{ $updateDate(item.update) }}
         </td>
         <td>
           <div
+            @click.prevent="selectItem(item.id)"
             :class="$style.item"
           >
             {{ $fileSizeUnit(item.file_size) }}
           </div>
         </td>
-        <td>
+        <td
+          @click.prevent="selectItem(item.id)"
+        >
           <TagList
             :tags="item.tags.filter((_: any, index: number) => index <= 2)"
           />

@@ -1,12 +1,22 @@
 <script setup lang="ts">
+type Emits = {
+  (e: string, tagName: string): void
+}
 type Props = {
   tags            : any[],
   isDisplayedIcon?: boolean,
+  deletable?      : boolean,
 }
 
+const emit = defineEmits<Emits>()
 const props = withDefaults(defineProps<Props>(), {
   isDisplayedIcon: false,
+  deletable      : false,
 })
+
+const deleteTag = (tagName: string): void => {
+  emit('deleteTag', tagName)
+}
 </script>
 
 <template>
@@ -27,6 +37,8 @@ const props = withDefaults(defineProps<Props>(), {
         <SearchTag
           :text="tag.name"
           :type="tag.type"
+          :deletable="deletable"
+          @deleteTag="deleteTag"
         />
       </li>
     </ul>

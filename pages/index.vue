@@ -6,6 +6,7 @@ definePageMeta({
 })
 
 const selectedListType = ref('card')
+const selectedFileId = ref('')
 const fileUploaderDisplayState = ref(false)
 const listTypeSelected = (listType: string): void => {
   selectedListType.value = listType
@@ -13,6 +14,9 @@ const listTypeSelected = (listType: string): void => {
 const fileUpload = (file: any) => {
   window.alert(`${file.name}がアップロードされました`)
 }
+const selectedFile = computed<any>(() => {
+  return selectedFileId.value ? fileList.find(file => file.id === selectedFileId.value) : {}
+})
 </script>
 
 <template>
@@ -84,10 +88,12 @@ const fileUpload = (file: any) => {
       <CardList
         v-show="selectedListType === 'card'"
         :list="fileList"
+        @selectFile="(fileId) => selectedFileId = fileId"
       />
       <FileListTable
         v-show="selectedListType === 'table'"
         :list="fileList"
+        @selectFile="(fileId) => selectedFileId = fileId"
       />
       <SectionHeading>
         <template
@@ -128,7 +134,41 @@ const fileUpload = (file: any) => {
           />
         </template>
       </SectionHeading>
+      <CommonTextBox>
+        <template #before>
+          <i class="bi bi-x-circle" />
+        </template>
+        <template #after>
+          <i class="bi bi-x-circle" />
+        </template>
+      </CommonTextBox>
+      <CommonSelectBox
+        :name="'select'"
+        :options="[
+          {
+            label: '選択肢１',
+            value: '１',
+          },
+          {
+            label: '選択肢２',
+            value: '２',
+          },
+        ]"
+      />
+      <CommonCheckBox
+        :name="'check'"
+        :label="'チェック'"
+      />
     </ContentsContainer>
+    <CommonModal
+      :displayState="Boolean(selectedFile.id)"
+      @closeModal="() => selectedFileId = ''"
+    >
+      <FileDetails
+        v-if="selectedFile.id"
+        :file="selectedFile"
+      />
+    </CommonModal>
   </PageContainer>
 </template>
 

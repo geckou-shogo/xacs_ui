@@ -54,11 +54,16 @@ const onButtonClick = () => {
   }
 
   &.standard {
-    --button-color  : var(--link-color);
+    --button-color: var(--link-color);
+  }
+
+  &.disabled {
+    --button-color: var(--disable-text-color);
+    pointer-events: none;
   }
 
   &.decision {
-    --button-color  : var(--decision-color);
+    --button-color: var(--decision-color);
   }
 
   &.alert {

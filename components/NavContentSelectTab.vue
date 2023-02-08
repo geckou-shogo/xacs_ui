@@ -47,7 +47,7 @@ const tabSelected = (tabValue: string): void => {
 <style lang="scss" module>
 .nav_content_select_tab {
   display      : flex;
-  height       : calc(var(--bv) * 8);
+  height       : calc(var(--bv) * 7);
   border-bottom: 1px solid var(--nav-border-color);
   
   .tab {

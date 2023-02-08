@@ -79,14 +79,12 @@ const filesCounted = computed(() => {
         :class="[$style.item, item.children ? '' : $style.bottom_layer]"
       >
         <i
-          v-if="item.children && displayChildItemName !== item.name"
-          class="bi bi-chevron-right"
-          :class="$style.arrow"
-        />
-        <i
-          v-if="item.children && displayChildItemName === item.name"
-          class="bi bi-chevron-down"
-          :class="$style.arrow"
+          v-if="item.children"
+          :class="[
+            'bi',
+            $style.arrow,
+            displayChildItemName === item.name ? 'bi-chevron-down' : 'bi-chevron-right'
+          ]"
         />
         <i
           :class="[
@@ -184,6 +182,7 @@ const filesCounted = computed(() => {
         overflow: inherit;
       }
     }
+
     .item {
       display    : flex;
       align-items: center;

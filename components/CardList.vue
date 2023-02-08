@@ -1,4 +1,10 @@
 <script setup lang="ts">
+type Emits = {
+  (e: string, itemId: string): void
+}
+
+const emit = defineEmits<Emits>()
+
 type Props = {
   list: any[],
 }
@@ -6,7 +12,7 @@ type Props = {
 const props = defineProps<Props>()
 const inUseOperationsId = ref('')
 const selectItem = (id: string): void => {
-  console.log(id)
+  emit('selectFile', id)
 }
 </script>
 
@@ -18,7 +24,7 @@ const selectItem = (id: string): void => {
       v-for="(item, index) in list"
       :key="item.id"
       :style="{
-        zIndex: 100 - index
+        zIndex: 69 - index
       }"
     >
       <ItemCard

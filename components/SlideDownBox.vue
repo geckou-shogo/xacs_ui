@@ -3,7 +3,7 @@ const contentsDisplayState = ref(false)
 const contentsBox = ref(null)
 const contentsBoxHeight = ref(0)
 onMounted(()=>{
-  const contentsBoxValue = contentsBox.value
+  const contentsBoxValue: any = contentsBox.value
   contentsBoxHeight.value = contentsBoxValue?.$el.clientHeight
 })
 const toggleBox = () => {

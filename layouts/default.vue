@@ -33,7 +33,7 @@ const tabSelected = (tabValue: string): void => {
           v-show="selectedTab === 'tree'"
           :tree="treeData.compiled.viewer.compiled_tree"
         />
-        <ContentsSearch
+        <TagSearch
           v-show="selectedTab === 'search'"
           :class="$style.search"
         />
@@ -62,8 +62,6 @@ const tabSelected = (tabValue: string): void => {
   </div>
 </template>
 
-
-
 <style lang="scss" module>
 :root {
   --bv                : .5rem;
@@ -91,6 +89,7 @@ const tabSelected = (tabValue: string): void => {
   --larger-font-size  : 18px;
   --small-font-size   : 12px;
   --min-font-size     : 10px;
+  --z-index-overlay   : 90;
   --z-index-header    : 80;
   --z-index-contents  : 70;
 }

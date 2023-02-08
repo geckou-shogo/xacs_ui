@@ -1,11 +1,20 @@
 
 <script setup lang="ts">
+type Emits = {
+  (e: string, tagName: string): void
+}
 type Props = {
-  text: string,
-  type: string,
+  text     : string,
+  type     : string,
+  deletable: boolean,
 }
 
+const emit = defineEmits<Emits>()
 const props = defineProps<Props>()
+
+const deleteTag = (tagName: string): void => {
+  emit('deleteTag', tagName)
+}
 </script>
 
 <template>
@@ -13,6 +22,11 @@ const props = defineProps<Props>()
     :class="[$style.tag, $style[`type-${type}`]]"
   >
     {{ text }}
+    <i
+      v-if="deletable"
+      @click="deleteTag(text)"
+      class="bi bi-x-lg"
+    />
   </span>
 </template>
 
@@ -20,6 +34,7 @@ const props = defineProps<Props>()
 .tag {
   display      : inline-flex;
   align-items  : center;
+  gap          : calc(var(--bv) / 2);
   height       : calc(var(--bv) * 2);
   padding      : 0 var(--bv);
   border-radius: var(--bv);
@@ -43,6 +58,10 @@ const props = defineProps<Props>()
     &-4 {
       background-color: var(--tag4-color);
     }
+  }
+
+  > i {
+    cursor: pointer;
   }
 }
 </style>

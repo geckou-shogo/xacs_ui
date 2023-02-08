@@ -67,18 +67,19 @@ const displayOperations = (): void => {
 
 <template>
   <ShadowBox
-    @click.prevent="selectItem"
     :class="$style.item_card"
   >
     <header
       :class="$style.header"
     >
       <div
+        @click.prevent="selectItem"
         :class="$style.header_icon"
       >
         <i :class="['bi', $contentIconClassName(item.content_type)]" />
       </div>
       <p
+        @click.prevent="selectItem"
         :class="$style.file_name"
       >
         {{ item.file_name }}
@@ -114,26 +115,30 @@ const displayOperations = (): void => {
       </template>
       </SlideDownBox>
     </header>
-    <dl
-      :class="$style.information"
+    <div
+      @click.prevent="selectItem"
     >
-      <div
-        :class="$style.information_item"
+      <dl
+        :class="$style.information"
       >
-        <dt>最終更新</dt>
-        <dd>{{ $updateDate(item.update) }}</dd>
-      </div>
-      <div
-        :class="$style.information_item"
-      >
-        <dt>ファイルサイズ</dt>
-        <dd>{{ $fileSizeUnit(item.file_size) }}</dd>
-      </div>
-    </dl>
-    <TagList
-      :tags="item.tags"
-      :class="$style.tag_list"
-    />
+        <div
+          :class="$style.information_item"
+        >
+          <dt>最終更新</dt>
+          <dd>{{ $updateDate(item.update) }}</dd>
+        </div>
+        <div
+          :class="$style.information_item"
+        >
+          <dt>ファイルサイズ</dt>
+          <dd>{{ $fileSizeUnit(item.file_size) }}</dd>
+        </div>
+      </dl>
+      <TagList
+        :tags="item.tags"
+        :class="$style.tag_list"
+      />
+    </div>
   </ShadowBox>
 </template>
 
@@ -142,6 +147,7 @@ const displayOperations = (): void => {
   border-radius: calc(var(--bv) / 2);
   cursor       : pointer;
   transition   : box-shadow .1s;
+  height       : 100%;
 
   &:hover {
     box-shadow: 0 0 0 2px var(--main-color);

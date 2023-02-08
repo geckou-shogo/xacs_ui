@@ -1,74 +1,55 @@
 <script setup lang="ts">
-  type Props = {
-    inputType  : String,
-    value      : String,
-    placeholder: String,
-    name       : String,
-    buttonText : String,
-    buttonType : String,
-    shouldButton: Boolean,
-  }
+type Emits = {
+  (e: string, newValue: string | number): void
+}
 
-  const Props = withDefaults(defineProps<Props>(), {
-    shouldButton: false,
-  })
+type Props = {
+  inputType?  : string,
+  placeholder?: string,
+}
 
-  const updateValue = ((e: any) => {
-    this.$emit('input', e.target.value)
-  })
+const emit = defineEmits<Emits>()
+const props = withDefaults(defineProps<Props>(), {
+  inputType  : 'text',
+  placeholder: '入力してください',
+})
+
+const updateValue = ((e: any) => {
+  emit('input', e.target.value)
+})
 </script>
 
 <template>
   <div
-    :class="$style.container"
+    :class="$style.text_box"
   >
+    <slot name="before" />
     <input 
-      @input="updateValue"
       :type="inputType"
-      :value="value"
-      :name="name"
       :placeholder="placeholder"
+      @input="updateValue"
     >
-    <div
-      v-show="shouldButton"
-      :class="$style.button"
-    >
-      <TextButton
-        :text="buttonText"
-        :iconName="buttonType"
-      >
-      </TextButton>
-    </div>
+    <slot name="after" />
   </div>
 </template>
 
 <style lang="scss" module>
-.container {
-  --border        : 1px solid var(--border-color);
-  padding         : 4px;
+.text_box {
   display         : flex;
-  border          : var(--border);
-  border-radius   : 4px;
+  align-items     : center;
+  padding         : 0 var(--bv);
   background-color: var(--white-color);
+  border          : 1px solid var(--border-color);
+  border-radius   : calc(var(--bv) / 2);
   
   input {
-    padding-right: var(--bv);
-    width        : 100%;
+    flex   : 1 1 auto;
+    padding: calc(var(--bv) * 2) var(--bv);
 
     &::placeholder {
-      font-size: 12px;
-    }
-  }
-
-  .button {
-    flex         : 1 0 auto;
-    border       : solid 1px var(--main-color);
-    border-radius: 3px;
-    
-    > button {
-      padding: 4px;
+      color    : var(--disable-text-color);
+      font-size: var(--small-font-size);
     }
   }
 }
-
 </style>
