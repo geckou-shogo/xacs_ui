@@ -159,6 +159,15 @@ fieldset {
   border: none;
 }
 
+button {
+  padding   : 0;
+  border    : none;
+  outline   : none;
+  font      : inherit;
+  color     : inherit;
+  background: none;
+}
+
 input,
 option,
 button {

@@ -159,6 +159,9 @@ const selectedFile = computed<any>(() => {
         :name="'check'"
         :label="'チェック'"
       />
+      <div>
+        <Pagination />
+      </div>
     </ContentsContainer>
     <CommonModal
       :displayState="Boolean(selectedFile.id)"
